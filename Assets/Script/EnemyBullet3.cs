@@ -34,6 +34,12 @@ public class EnemyBullet3 : MonoBehaviour
         {
             Destroy(gameObject); // huy 1 object, tham so truyen vao la gameObect luon
         }
+
+        
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

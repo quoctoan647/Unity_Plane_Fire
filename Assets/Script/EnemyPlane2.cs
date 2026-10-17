@@ -45,6 +45,12 @@ public class EnemyPlane2 : MonoBehaviour
 
         timer += Time.deltaTime;
         Shoot();
+
+        
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
     }
 
     public EnemyBullet2 bullet2;

@@ -43,6 +43,11 @@ public class StarPointFalling : MonoBehaviour
             randomX = Random.Range(left + 1, right - 1);
             spawnTime = Random.Range(minTime, maxTime);
         }
+
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
     }
 
 

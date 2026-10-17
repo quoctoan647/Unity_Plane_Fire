@@ -29,6 +29,11 @@ public class UpgradePrefab : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D  collision)

@@ -45,6 +45,12 @@ public class EnemyPlane1 : MonoBehaviour
             Destroy(gameObject);
         }
 
+        
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
+
     }
 
 

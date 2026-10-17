@@ -26,6 +26,12 @@ public class BackgroundLooper : MonoBehaviour
             transform.position += Vector3.up * imageHeight * 2f;
         }
 
+        
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
+
 
     }
 }

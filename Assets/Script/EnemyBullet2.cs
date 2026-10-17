@@ -37,6 +37,10 @@ public class EnemyBullet2 : MonoBehaviour
         }
 
 
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
 
     }
 

@@ -41,6 +41,11 @@ public class PlayerBullet : MonoBehaviour
         {
             Destroy(gameObject); // huy 1 object, tham so truyen vao la gameObect luon
         }
+
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
     }
 
 

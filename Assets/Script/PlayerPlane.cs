@@ -88,6 +88,11 @@ public class PlayerPlane : MonoBehaviour
         timer += Time.deltaTime;
         Shoot();
 
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
+
 
     }
 

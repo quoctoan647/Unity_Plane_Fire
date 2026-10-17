@@ -44,8 +44,16 @@ public class EnemyPlane3 : MonoBehaviour
             Destroy(gameObject);
         }
 
+        
+       
+
         timer += Time.deltaTime;
         Shoot();
+
+        if(GameManager._i.isPaused == true)
+        {
+            return;
+        }
 
     }
 
