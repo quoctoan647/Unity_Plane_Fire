@@ -19,6 +19,12 @@ public class BackgroundLooper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         
+        if(GameManager._i.isPaused || GameManager._i.isEndGame)
+        {
+            return;
+        }
+
         transform.position += Vector3.down * speed * Time.deltaTime;
 
         if (transform.position.y + imageHeight / 2f <= bottom)
@@ -26,11 +32,7 @@ public class BackgroundLooper : MonoBehaviour
             transform.position += Vector3.up * imageHeight * 2f;
         }
 
-        
-        if(GameManager._i.isPaused == true)
-        {
-            return;
-        }
+       
 
 
     }

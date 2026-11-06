@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6979146459017147995}
   - component: {fileID: 3578360663028309671}
-  - component: {fileID: 4403077233762960079}
   - component: {fileID: 7413828775917062293}
   - component: {fileID: -362487605657480131}
   - component: {fileID: -2853980911558924688}
+  - component: {fileID: -1504664452188429747}
   m_Layer: 0
   m_Name: img_plane_main_honey_01_0
   m_TagString: Untagged
@@ -91,22 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4403077233762960079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6641406969769612185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa021332afe8a24a8c9f6f38e654517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 4
-  speed: 1
-  timer: 0
-  bullet3: {fileID: -6146281197366268684, guid: b877a4ab303b0d040af7028e9538f683, type: 3}
 --- !u!50 &7413828775917062293
 Rigidbody2D:
   serializedVersion: 5
@@ -194,3 +178,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swayAmplitude: 0.4
   swayFrequency: 6
+--- !u!114 &-1504664452188429747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641406969769612185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1893cd9da60641b651ebb82cef125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  health: 4
+  timer: 0
+  enemyBullet: {fileID: -6074551841923001112, guid: b877a4ab303b0d040af7028e9538f683, type: 3}
+  upgrade: 1

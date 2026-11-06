@@ -22,6 +22,12 @@ public class UpgradePrefab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(GameManager._i.isPaused || GameManager._i.isEndGame)
+        {
+            return;
+        }
+
         Vector3 direction = Vector3.zero;
         direction.y -=1;
         transform.position += direction*speed*Time.deltaTime;
@@ -30,10 +36,7 @@ public class UpgradePrefab : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(GameManager._i.isPaused == true)
-        {
-            return;
-        }
+        
     }
 
     void OnTriggerEnter2D(Collider2D  collision)

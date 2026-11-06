@@ -35,6 +35,12 @@ public class StarPointFalling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(GameManager._i.isPaused || GameManager._i.isEndGame)
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
         if (timer >= spawnTime)
         {
@@ -44,10 +50,7 @@ public class StarPointFalling : MonoBehaviour
             spawnTime = Random.Range(minTime, maxTime);
         }
 
-        if(GameManager._i.isPaused == true)
-        {
-            return;
-        }
+        
     }
 
 

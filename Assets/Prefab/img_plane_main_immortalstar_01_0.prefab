@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4890528895373183087}
   - component: {fileID: 4793395713934240664}
-  - component: {fileID: 8510416163891208178}
   - component: {fileID: -7089734754701121757}
   - component: {fileID: -5756299505062620970}
   - component: {fileID: 6587907002451182155}
+  - component: {fileID: 1394824562500360794}
   m_Layer: 0
   m_Name: img_plane_main_immortalstar_01_0
   m_TagString: Untagged
@@ -91,22 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8510416163891208178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557531124672605855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d263f8c898025d14f8a1b290fb6617fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 4
-  speed: 1
-  timer: 0
-  bullet2: {fileID: -6131804437724584539, guid: 6bc55e49f31e7744c81963580f3a4865, type: 3}
 --- !u!61 &-7089734754701121757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,3 +178,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swayAmplitude: 0.4
   swayFrequency: 6
+--- !u!114 &1394824562500360794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557531124672605855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1893cd9da60641b651ebb82cef125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  health: 4
+  timer: 0
+  enemyBullet: {fileID: 1872521675628802669, guid: 6bc55e49f31e7744c81963580f3a4865, type: 3}
+  upgrade: 1

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8587095922220803913}
   - component: {fileID: 5004804518503395419}
-  - component: {fileID: -6131804437724584539}
   - component: {fileID: 4669708208381976690}
   - component: {fileID: -2794703722851884680}
+  - component: {fileID: 1872521675628802669}
   m_Layer: 0
   m_Name: wsparticle_line05_0
   m_TagString: Untagged
@@ -90,19 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6131804437724584539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332745492364623779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12175321eca51d4088b63b774a88e17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!61 &4669708208381976690
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,3 +163,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1872521675628802669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332745492364623779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e665d0d3a486e50408ade7e280de1ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5

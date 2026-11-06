@@ -16,11 +16,16 @@ public class EnemySway : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     void LateUpdate()
     {
+        if(GameManager._i.isPaused || GameManager._i.isEndGame)
+        {
+            return;
+        }
+
         if (!initialized)
         {
             swayPhase = Random.Range(0f, Mathf.PI * 2f);

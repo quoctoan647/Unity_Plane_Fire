@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7961300084737303285}
   - component: {fileID: 7754211332311194207}
-  - component: {fileID: 5872584052662607182}
   - component: {fileID: -2619624099170601980}
   - component: {fileID: -5556642503807231786}
   - component: {fileID: -3217250197231610190}
+  - component: {fileID: -8122841247110734721}
   m_Layer: 0
   m_Name: img_plane_main_angel_01_0
   m_TagString: Untagged
@@ -91,20 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5872584052662607182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8170341859197179533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1e7eaf97fdc484fbd5557630a2c5f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  health: 6
 --- !u!50 &-2619624099170601980
 Rigidbody2D:
   serializedVersion: 5
@@ -192,3 +178,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swayAmplitude: 0.4
   swayFrequency: 6
+--- !u!114 &-8122841247110734721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170341859197179533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c1893cd9da60641b651ebb82cef125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  health: 5

@@ -26,6 +26,12 @@ public class PlayerPlane : MonoBehaviour
 
     void Update()
     {
+
+         if(GameManager._i.isPaused || GameManager._i.isEndGame)
+        {
+            return;
+        }
+
         Vector3 direction = new Vector3(0, 0, 0);
 
 
@@ -66,32 +72,20 @@ public class PlayerPlane : MonoBehaviour
             speed = 8f;
         }
 
-        transform.position += direction * (speed * Time.deltaTime);
 
-        Camera cam = Camera.main;
-        float screenHeight = cam.orthographicSize * 2f;
-        float screenWidth = screenHeight * cam.aspect;
+    
+        transform.position +=direction*speed*Time.deltaTime;
 
-        float left = cam.transform.position.x - screenWidth / 2f;
-        float right = cam.transform.position.x + screenWidth / 2f;
-
-        float top = cam.transform.position.y + screenHeight / 2f;
-        float bottom = cam.transform.position.y - screenHeight / 2f;
-
-        float x = Mathf.Clamp(transform.position.x, left, right);            //Mathf.Clamp(value, min, max) kiem tra 1 gia tri co nam trong khoan quy dinh ko, neu  ko thi gan lai cho gia tri min hoac max
-        float y = Mathf.Clamp(transform.position.y, bottom, top);
-
-        transform.position = new Vector3(x, y, transform.position.z);
+        float x = Mathf.Clamp(transform.position.x, CameraCam.cmr.left, CameraCam.cmr.right);
+        float y = Mathf.Clamp(transform.position.y, CameraCam.cmr.bottom, CameraCam.cmr.top);
+        transform.position = new Vector3(x,y,transform.position.z);
 
 
 
         timer += Time.deltaTime;
         Shoot();
 
-        if(GameManager._i.isPaused == true)
-        {
-            return;
-        }
+       
 
 
     }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9106200898653291172}
   - component: {fileID: 5884555517251873078}
-  - component: {fileID: -6146281197366268684}
   - component: {fileID: -3521450228841288920}
   - component: {fileID: 2341501960432704179}
+  - component: {fileID: -6074551841923001112}
   m_Layer: 0
   m_Name: wsparticle_jiabailiejian_0
   m_TagString: Untagged
@@ -90,19 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6146281197366268684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7068752832618781249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1890fa6de868dcf43b44eddbdd12c99e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!50 &-3521450228841288920
 Rigidbody2D:
   serializedVersion: 5
@@ -176,3 +163,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.32, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &-6074551841923001112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068752832618781249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e665d0d3a486e50408ade7e280de1ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
