@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject winPopup;
     public TMP_Text winScoreText;
     public PlayerPlane playerPlane;
+    public GameObject loseGame;
     public void Awake()
     {
         _i = this;
@@ -38,6 +39,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void HomeClick()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,7 +65,7 @@ public class GameManager : MonoBehaviour
     {
         if (isEndGame) return;
         enemiesKilled++;
-        Debug.Log($"Enemy bị tiêu diệt: {enemiesKilled}/5");
+        Debug.Log($"Enemy bị tiêu diệt: {enemiesKilled}/10");
 
         if (enemiesKilled >= 10)
         {
@@ -67,7 +73,7 @@ public class GameManager : MonoBehaviour
             isWin = true;
             winScoreText.text = "SCORE: " + playerPlane.point;
             winPopup.SetActive(true);
-            Debug.Log("Ban thắng");
+            Debug.Log("Bạn thắng");
         }
     }
     public void PlayerDied()
@@ -75,6 +81,7 @@ public class GameManager : MonoBehaviour
         if (isEndGame) return;
         isWin = false;
         isEndGame = true;
-        Debug.Log("bạn thua!");
+        loseGame.SetActive(true);
+        Debug.Log("Bạn thua!");
     }
 }
