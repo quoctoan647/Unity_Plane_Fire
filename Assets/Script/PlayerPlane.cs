@@ -3,16 +3,6 @@ using UnityEngine;
 
 public class PlayerPlane : MonoBehaviour
 {
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        transform.position = new Vector3(0, -3, 0);  // c# ko cho phep viet lenh thuc thi bên ngoài method, nen bat buoc phai viet ben trong 1 method nao do
-
-        GameManager._i.BeginGame();
-    }
-
-    // Update is called once per frame
     public float speed = 8f;
     public float acceleration = 2f;
     public PlayerBullet bulletPrefab;
@@ -22,6 +12,25 @@ public class PlayerPlane : MonoBehaviour
     public float timer = 0f;
     public int health = 10;
     public int point = 0;
+    public Sprite[] selectablePlane;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        int planeIndex = PlayerPrefs.GetInt("SelectedPlaneIndex",0);
+        SpriteRenderer planeRenderer  = GetComponent<SpriteRenderer>();
+        if(planeRenderer != null && selectablePlane != null && selectablePlane.Length > 0)
+        {
+            planeIndex = Mathf.Clamp(planeIndex, 0, selectablePlane.Length-1);
+        }
+        planeRenderer.sprite = selectablePlane[planeIndex];
+
+        transform.position = new Vector3(0, -3, 0);  // c# ko cho phep viet lenh thuc thi bên ngoài method, nen bat buoc phai viet ben trong 1 method nao do
+
+        GameManager._i.BeginGame();
+    }
+
+    // Update is called once per frame
+    
 
 
     void Update()

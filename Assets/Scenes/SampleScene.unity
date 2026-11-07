@@ -1232,6 +1232,10 @@ MonoBehaviour:
   timer: 0
   health: 5
   point: 0
+  selectablePlane:
+  - {fileID: -6546641146855675871, guid: 28a45913be5fe3d44b2970385bf38480, type: 3}
+  - {fileID: 8315329906464220919, guid: a05634d5165936f45937c7e5731cc2b3, type: 3}
+  - {fileID: 4912550233629586356, guid: fb1cf40152a31bb4caf2ffedf21c4ce7, type: 3}
 --- !u!212 &681638557
 SpriteRenderer:
   m_ObjectHideFlags: 0
