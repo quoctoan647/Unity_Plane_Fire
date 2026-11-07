@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public TMP_Text winScoreText;
     public PlayerPlane playerPlane;
     public GameObject loseGame;
+    public TMP_Text healthText;
+    public TMP_Text enemyKillText;
+    public TMP_Text levelText;
+    public TMP_Text scoreText;
     public void Awake()
     {
         _i = this;
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateHUD();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PauseGame();
@@ -83,5 +88,13 @@ public class GameManager : MonoBehaviour
         isEndGame = true;
         loseGame.SetActive(true);
         Debug.Log("Bạn thua!");
+    }
+
+    public void UpdateHUD()
+    {
+        healthText.text = $"HP: {playerPlane.health}/10";
+        scoreText.text = $"Score: {playerPlane.point}/10";
+        enemyKillText.text = $"Enemies: {enemiesKilled}/10";
+        levelText.text = $"Level: {playerPlane.bulletLevel}/3";
     }
 }
