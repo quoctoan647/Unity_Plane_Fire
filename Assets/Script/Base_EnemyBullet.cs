@@ -36,6 +36,11 @@ public class Base_EnemyBullet : MonoBehaviour
         if (plane)
         {
             Destroy(this.gameObject);
+            if(plane.IsShieldActive)
+            {
+                Destroy(gameObject);
+                return;
+            }
             plane.health -= 1;
             if (plane.health <= 0)
             {
@@ -43,5 +48,7 @@ public class Base_EnemyBullet : MonoBehaviour
                 Destroy(plane.gameObject);
             }
         }
+
+
     }
 }

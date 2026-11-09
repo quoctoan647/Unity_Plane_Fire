@@ -13,16 +13,32 @@ public class PlayerPlane : MonoBehaviour
     public int health = 10;
     public int point = 0;
     public Sprite[] selectablePlane;
+    [Header("Shield Booster")]
+    public float shieldDuration = 5f;
+    public float shieldCoolDown = 30f;
+    public bool IsShieldActive { get; private set; }
+    private float shieldEndTime;
+    private float shieldReadyTime;
+    [SerializeField] private PlayerShield shieldPrefabs;
+    private PlayerShield shieldInstance;
+
+    [Header("Double Booster")]
+    public float doubleBoosterDuration = 5f;
+    public float doubleBoosterCoolDown = 60f;
+    public bool IsDoubleBoosterActive { get; private set; }
+    private float doubleBoosterEndTime;
+    private float doubleBoosterReadyTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        int planeIndex = PlayerPrefs.GetInt("SelectedPlaneIndex",0);
-        SpriteRenderer planeRenderer  = GetComponent<SpriteRenderer>();
-        if(planeRenderer != null && selectablePlane != null && selectablePlane.Length > 0)
+        int planeIndex = PlayerPrefs.GetInt("SelectedPlaneIndex", 0);
+        SpriteRenderer planeRenderer = GetComponent<SpriteRenderer>();
+        if (planeRenderer != null && selectablePlane != null && selectablePlane.Length > 0)
         {
-            planeIndex = Mathf.Clamp(planeIndex, 0, selectablePlane.Length-1);
+            planeIndex = Mathf.Clamp(planeIndex, 0, selectablePlane.Length - 1);
+            planeRenderer.sprite = selectablePlane[planeIndex];
         }
-        planeRenderer.sprite = selectablePlane[planeIndex];
+
 
         transform.position = new Vector3(0, -3, 0);  // c# ko cho phep viet lenh thuc thi bên ngoài method, nen bat buoc phai viet ben trong 1 method nao do
 
@@ -30,16 +46,32 @@ public class PlayerPlane : MonoBehaviour
     }
 
     // Update is called once per frame
-    
+
 
 
     void Update()
     {
 
-         if(GameManager._i.isPaused || GameManager._i.isEndGame)
+        if (GameManager._i.isPaused || GameManager._i.isEndGame)
         {
             return;
         }
+
+        if (IsShieldActive && Time.time >= shieldEndTime)
+        {
+            IsShieldActive = false;
+            Destroy(shieldInstance.gameObject);
+        }
+
+        if (IsDoubleBoosterActive && Time.time >= doubleBoosterEndTime)
+        {
+            IsDoubleBoosterActive = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q)) ActivateShield();
+
+        if (Input.GetKeyDown(KeyCode.E)) ActivateDoubleBooster();
+
 
         Vector3 direction = new Vector3(0, 0, 0);
 
@@ -68,7 +100,6 @@ public class PlayerPlane : MonoBehaviour
 
         }
 
-
         // Reset speed ve 8 khi object dung
         if (direction != Vector3.zero)
         {
@@ -81,44 +112,67 @@ public class PlayerPlane : MonoBehaviour
             speed = 8f;
         }
 
-
-    
-        transform.position +=direction*speed*Time.deltaTime;
-
+        transform.position += direction * speed * Time.deltaTime;
         float x = Mathf.Clamp(transform.position.x, CameraCam.cmr.left, CameraCam.cmr.right);
         float y = Mathf.Clamp(transform.position.y, CameraCam.cmr.bottom, CameraCam.cmr.top);
-        transform.position = new Vector3(x,y,transform.position.z);
-
-
+        transform.position = new Vector3(x, y, transform.position.z);
 
         timer += Time.deltaTime;
         Shoot();
-
-       
-
-
     }
 
+    void ActivateShield()
+    {
+        if (Time.time < shieldReadyTime) return;
+
+        IsShieldActive = true;
+        shieldEndTime = Time.time + shieldDuration;
+        shieldReadyTime = Time.time + shieldCoolDown;
+        shieldInstance = Instantiate(shieldPrefabs, transform);
+        shieldInstance.transform.localPosition = Vector3.zero;
+    }
+
+    void ActivateDoubleBooster()
+    {
+        if (Time.time < doubleBoosterReadyTime) return;
+
+        IsDoubleBoosterActive = true;
+        doubleBoosterEndTime = Time.time + doubleBoosterDuration;
+        doubleBoosterReadyTime = Time.time + doubleBoosterCoolDown;
+    }
+
+    void SprawnPlayerBullet(Vector3 position, Quaternion rotation)
+    {
+        PlayerBullet bullet = Instantiate(Choose_BulletLevel(), position, rotation);
+        if (IsDoubleBoosterActive)
+        {
+            bullet.damage *= 2;
+        }
+    }
 
     void Shoot()
     {
-        if (timer >= 0.5)
+        float fireInterval = IsDoubleBoosterActive ? 0.25f : 0.5f;
+        if (timer >= fireInterval)
         {
             if (bulletLevel == 1)
             {
-                Instantiate(Choose_BulletLevel(), transform.position, transform.rotation);
+                SprawnPlayerBullet(transform.position, transform.rotation);
+
             }
             else if (bulletLevel == 2)
             {
                 Vector3 temp = new Vector3(0.25f, 0f, 0f);
-                Instantiate(Choose_BulletLevel(), transform.position + temp, transform.rotation);
-                Instantiate(Choose_BulletLevel(), transform.position - temp, transform.rotation);
+                SprawnPlayerBullet(transform.position + temp, transform.rotation);
+                SprawnPlayerBullet(transform.position - temp, transform.rotation);
+
             }
             else
             {
-                Instantiate(Choose_BulletLevel(), transform.position, transform.rotation);
-                Instantiate(Choose_BulletLevel(), transform.position, Quaternion.Euler(0f, 0f, 45f));
-                Instantiate(Choose_BulletLevel(), transform.position, Quaternion.Euler(0f, 0f, -45f));
+                SprawnPlayerBullet(transform.position, transform.rotation);
+                SprawnPlayerBullet(transform.position, Quaternion.Euler(0f, 0f, 45f));
+                SprawnPlayerBullet(transform.position, Quaternion.Euler(0f, 0f, -45f));
+
             }
 
 

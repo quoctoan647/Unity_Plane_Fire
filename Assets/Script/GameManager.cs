@@ -10,15 +10,17 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     public bool isWin;
     public bool isEndGame;
-    public int enemiesKilled = 0;
-    public GameObject winPopup;
-    public TMP_Text winScoreText;
-    public PlayerPlane playerPlane;
-    public GameObject loseGame;
-    public TMP_Text healthText;
-    public TMP_Text enemyKillText;
-    public TMP_Text levelText;
-    public TMP_Text scoreText;
+    [SerializeField] private int enemiesKilled = 0;
+    [SerializeField] private GameObject winPopup;
+    [SerializeField] private TMP_Text winScoreText;
+    [SerializeField] private PlayerPlane playerPlane;
+    [SerializeField] private GameObject loseGame;
+    [SerializeField] private TMP_Text healthText;
+    [SerializeField] private TMP_Text enemyKillText;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text loseKillText;
+    [SerializeField] private TMP_Text loseScoreText;
     public void Awake()
     {
         _i = this;
@@ -86,6 +88,8 @@ public class GameManager : MonoBehaviour
         if (isEndGame) return;
         isWin = false;
         isEndGame = true;
+        loseScoreText.text = $"Score: {playerPlane.point}";
+        loseKillText.text = $"Kill: {enemiesKilled}/10";
         loseGame.SetActive(true);
         Debug.Log("Bạn thua!");
     }
@@ -93,8 +97,12 @@ public class GameManager : MonoBehaviour
     public void UpdateHUD()
     {
         healthText.text = $"HP: {playerPlane.health}/10";
-        scoreText.text = $"Score: {playerPlane.point}/10";
+        scoreText.text = $"Score: {playerPlane.point}";
         enemyKillText.text = $"Enemies: {enemiesKilled}/10";
         levelText.text = $"Level: {playerPlane.bulletLevel}/3";
     }
+
+
+
+
 }

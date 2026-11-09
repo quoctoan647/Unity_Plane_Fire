@@ -29,9 +29,6 @@ public class PlayerBullet : MonoBehaviour
         Vector3 direction = transform.up;              // .up la lay huong phia truoc cua object, nó tra ve 1 Vector3
         transform.position += direction * speed * Time.deltaTime;
 
-
-
-        
         //float y = Mathf.Clamp(transform.position.y, bottom, top);
         //float x = Mathf.Clamp(transform.position.x, left, right);
         //transform.position = new Vector3(x, y, transform.position.z);
@@ -40,8 +37,6 @@ public class PlayerBullet : MonoBehaviour
         {
             Destroy(gameObject); // huy 1 object, tham so truyen vao la gameObect luon
         }
-
-       
     }
 
 
