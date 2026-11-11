@@ -27,9 +27,7 @@ public class Base_EnemyPlane : MonoBehaviour
             return;
         }
 
-        Vector3 direction = Vector3.zero;
-        direction.y -= 1;
-        transform.position += direction * speed * Time.deltaTime;
+        Move();
 
 
         if (transform.position.y < CameraCam.cmr.bottom)
@@ -48,9 +46,14 @@ public class Base_EnemyPlane : MonoBehaviour
 
     }
 
-    void Shoot()
+    protected virtual void Shoot()
     {
 
         Instantiate(enemyBullet, transform.position, transform.rotation);
+    }
+
+    protected virtual void Move()
+    {
+        transform.position += Vector3.down  * speed *Time.deltaTime;
     }
 }

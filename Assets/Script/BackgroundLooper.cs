@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BackgroundLooper : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float speed = 1f;
     [SerializeField] private float imageHeight;
     private float bottom;
     private Camera cam;
@@ -19,8 +19,8 @@ public class BackgroundLooper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         
-        if(GameManager._i.isPaused || GameManager._i.isEndGame)
+
+        if (GameManager._i.isPaused || GameManager._i.isEndGame)
         {
             return;
         }
@@ -32,7 +32,7 @@ public class BackgroundLooper : MonoBehaviour
             transform.position += Vector3.up * imageHeight * 2f;
         }
 
-       
+
 
 
     }

@@ -21,7 +21,7 @@ public class PlayerBullet : MonoBehaviour
     void Update()
     {
 
-         if (GameManager._i.isPaused || GameManager._i.isEndGame)
+        if (GameManager._i.isPaused || GameManager._i.isEndGame)
         {
             return;
         }

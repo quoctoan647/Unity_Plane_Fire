@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     public bool isWin;
     public bool isEndGame;
-    [SerializeField] private int enemiesKilled = 0;
+    public int enemiesKilled = 0;
     [SerializeField] private GameObject winPopup;
     [SerializeField] private TMP_Text winScoreText;
     [SerializeField] private PlayerPlane playerPlane;
@@ -21,6 +22,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text loseKillText;
     [SerializeField] private TMP_Text loseScoreText;
+    [SerializeField] private Sprite[] stageClear;
+    [SerializeField] private Image currentStage;
+    [SerializeField] private GameObject StageClearCard;
+    [SerializeField] private float timer = 0f;
+    [SerializeField] private bool isStageClearActive;
+    public int lastStage = 0;
+    
     public void Awake()
     {
         _i = this;
@@ -60,7 +68,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isStageClearActive)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 1)
+            {
+                StageClearCard.SetActive(false);
+                isStageClearActive = false;
+                timer = 0;
+            }
+
+        }
         UpdateHUD();
+        StageClearShow();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PauseGame();
@@ -74,7 +95,7 @@ public class GameManager : MonoBehaviour
         enemiesKilled++;
         Debug.Log($"Enemy bị tiêu diệt: {enemiesKilled}/10");
 
-        if (enemiesKilled >= 10)
+        if (enemiesKilled >= 16)
         {
             isEndGame = true;
             isWin = true;
@@ -102,7 +123,30 @@ public class GameManager : MonoBehaviour
         levelText.text = $"Level: {playerPlane.bulletLevel}/3";
     }
 
+    public void StageClearShow()
+    {
+        if (enemiesKilled == 5 && lastStage < 5)
+        {
+            currentStage.sprite = stageClear[0];
+            StageClearCard.SetActive(true);
+            isStageClearActive = true;
+            lastStage = 5;
+        }
+        else if (enemiesKilled == 10 && lastStage < 10)
+        {
+            currentStage.sprite = stageClear[1];
+            StageClearCard.SetActive(true);
+            isStageClearActive = true;
+            lastStage = 10;
+        }
+        else if (enemiesKilled == 15 && lastStage < 15)
+        {
+            currentStage.sprite = stageClear[2];
+            StageClearCard.SetActive(true);
+            isStageClearActive = true;
+            lastStage = 15;
+            
+        }
 
-
-
+    }
 }
